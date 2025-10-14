@@ -118,6 +118,3 @@ Jika target berupa **kategori atau label diskrit**, maka itu termasuk **klasifik
 - Jangan hanya fokus pada akurasi — pertimbangkan **interpretabilitas dan efisiensi**.
 
 ---
-
-📅 **Tanggal Pembelajaran:** _14-10-2025_  
-👨‍💻 **Penulis:** Judhistira Ooka Pratama
