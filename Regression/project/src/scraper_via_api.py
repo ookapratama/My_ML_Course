@@ -334,8 +334,8 @@ class TokopediaScraper:
             filename = f'tokopedia_laptops_{timestamp}.csv'
         
         # Create directory if not exists
-        os.makedirs('data/raw', exist_ok=True)
-        filepath = f'data/raw/{filename}'
+        os.makedirs('../data/raw', exist_ok=True)
+        filepath = f'../data/raw/{filename}'
         
         df.to_csv(filepath, index=False, encoding='utf-8-sig')
         print(f"💾 Saved to: {filepath}")
@@ -348,8 +348,8 @@ class TokopediaScraper:
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             filename = f'tokopedia_laptops_{timestamp}.xlsx'
         
-        os.makedirs('data/raw', exist_ok=True)
-        filepath = f'data/raw/{filename}'
+        os.makedirs('../data/raw', exist_ok=True)
+        filepath = f'../data/raw/{filename}'
         
         df.to_excel(filepath, index=False, engine='openpyxl')
         print(f"💾 Saved to: {filepath}")
