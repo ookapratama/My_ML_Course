@@ -291,183 +291,244 @@ def fill_missing_storage_type(price):
   else:
       return 'ssd'
 
+# def extract_cpu_brand(cpu):
+#   if pd.isna(cpu):
+#       return None
+#   cpu = cpu.upper()
+#   if "RYZEN" in cpu or "AMD" in cpu:
+#       return "AMD"
+#   if "INTEL" in cpu or "I3" in cpu or "I5" in cpu or "I7" in cpu or "I9" in cpu:
+#       return "Intel"
+#   return "Unknown"
 
-def extract_cpu_brand(cpu):
-  if pd.isna(cpu):
-      return None
-  cpu = cpu.upper()
-  if "RYZEN" in cpu or "AMD" in cpu:
-      return "AMD"
-  if "INTEL" in cpu or "I3" in cpu or "I5" in cpu or "I7" in cpu or "I9" in cpu:
-      return "Intel"
-  return "Unknown"
-
-
-def extract_cpu_model(cpu):
-  if pd.isna(cpu):
-      return None
-  cpu = cpu.upper()
-
-  match = re.search(r'(I3|I5|I7|I9|RYZEN\s*\d)', cpu)
-  return match.group(0) if match else None
 
 def extract_cpu_brand(text):
-  """
-  Extract CPU brand dari nama produk
-  
-  Returns:
-      str: 'Intel', 'AMD', 'Apple', atau None
-  """
-  if pd.isna(text):
-      return None
-  
-  text_upper = text.upper()
-  
-  # Intel
-  if re.search(r'\b(INTEL|CORE\s+I[3579]|CELERON|PENTIUM)\b', text_upper):
-      return 'Intel'
-  
-  # AMD
-  if re.search(r'\b(AMD|RYZEN|ATHLON)\b', text_upper):
-      return 'AMD'
-  
-  # Apple
-  if re.search(r'\b(APPLE|M[123]\b|MACBOOK)\b', text_upper):
-      return 'Apple'
-  
-  return None
+    """
+    Extract CPU brand dari nama produk
+    
+    Returns:
+        str: 'Intel', 'AMD', 'Apple', atau None
+    """
+    if pd.isna(text):
+        return None
+    
+    text_upper = text.upper()
+    
+    # Intel
+    if re.search(r'\b(INTEL|CORE\s+I[3579]|CELERON|PENTIUM)\b', text_upper):
+        return 'Intel'
+    
+    # AMD
+    if re.search(r'\b(AMD|RYZEN|ATHLON)\b', text_upper):
+        return 'AMD'
+    
+    # Apple
+    if re.search(r'\b(APPLE|M[123]\b|MACBOOK)\b', text_upper):
+        return 'Apple'
+    
+    return None
 
 
 def extract_cpu_model(text):
-  """
-  Extract CPU model dari nama produk
-  
-  Returns:
-      str: Model CPU (e.g., 'i5-1135G7', 'Ryzen 5 5500U', 'M2')
-  """
-  if pd.isna(text):
-      return None
-  
-  text_upper = text.upper()
-  
-  # Intel Core i3/i5/i7/i9 dengan generasi
-  # Pattern: i5-12450H, i7 13700H, Core i5 1135G7
-  pattern_intel = r'(CORE\s+)?(I[3579])\s*-?\s*(\d{4,5}[A-Z]*)'
-  match = re.search(pattern_intel, text_upper)
-  if match:
-      model = match.group(2) + '-' + match.group(3)
-      return model.replace(' ', '-')
-  
-  # Intel Celeron/Pentium
-  pattern_celeron = r'(CELERON|PENTIUM)\s+([A-Z0-9\-]+)'
-  match = re.search(pattern_celeron, text_upper)
-  if match:
-      return match.group(1) + ' ' + match.group(2)
-  
-  # AMD Ryzen
-  # Pattern: Ryzen 5 5500U, Ryzen 7 5800H
-  pattern_ryzen = r'RYZEN\s+([3579])\s+(\d{4}[A-Z]*)'
-  match = re.search(pattern_ryzen, text_upper)
-  if match:
-      return 'Ryzen ' + match.group(1) + ' ' + match.group(2)
-  
-  # AMD Athlon
-  pattern_athlon = r'ATHLON\s+([A-Z0-9\-]+)'
-  match = re.search(pattern_athlon, text_upper)
-  if match:
-      return 'Athlon ' + match.group(1)
-  
-  # Apple M1/M2/M3
-  pattern_apple = r'\b(M[123])\s*(PRO|MAX|ULTRA)?\b'
-  match = re.search(pattern_apple, text_upper)
-  if match:
-      chip = match.group(1)
-      variant = match.group(2) if match.group(2) else ''
-      return (chip + ' ' + variant).strip()
-  
-  return None
+    """
+    Extract CPU model dari nama produk
+    
+    Returns:
+        str: Model CPU (e.g., 'i5-1135G7', 'Ryzen 5 5500U', 'M2', 'N4020')
+    """
+    if pd.isna(text):
+        return None
+    
+    text_upper = text.upper()
+    
+    # Intel Core Ultra (handle dulu yang spesifik)
+    # Pattern: Core Ultra 5 125H, Core Ultra 7 155H
+    pattern_ultra = r'CORE\s+ULTRA\s+([579])\s+(\d{3,5}[A-Z]*)'
+    match = re.search(pattern_ultra, text_upper)
+    if match:
+        return 'Core Ultra ' + match.group(1) + ' ' + match.group(2)
+    
+    # Intel Core i3/i5/i7/i9 dengan generasi
+    # Pattern: i5-12450H, i7-13700H, Core i5-1135G7, i5 1135G7
+    pattern_intel_core = r'(?:CORE\s+)?(I[3579])\s*-?\s*(\d{4,5}[A-Z]*)'
+    match = re.search(pattern_intel_core, text_upper)
+    if match:
+        return match.group(1) + '-' + match.group(2)
+    
+    # Intel N-series (N4020, N5030, N100, N200, dll)
+    # Pattern: N4020, N5030, N95, N100, N200
+    pattern_n_series = r'\b(N\d{3,4}[A-Z]*)\b'
+    match = re.search(pattern_n_series, text_upper)
+    if match:
+        return match.group(1)
+    
+    # Intel Celeron/Pentium (dengan model number)
+    # Pattern: Celeron N4020, Pentium Silver N5030, Celeron 5205U
+    pattern_celeron = r'(CELERON|PENTIUM)\s+(SILVER\s+|GOLD\s+)?([A-Z]?\d{3,5}[A-Z]*)'
+    match = re.search(pattern_celeron, text_upper)
+    if match:
+        prefix = match.group(1)
+        variant = match.group(2).strip() if match.group(2) else ''
+        model = match.group(3)
+        return f"{prefix} {variant} {model}".strip().replace('  ', ' ')
+    
+    # Intel Atom (jarang, tapi ada)
+    # Pattern: Atom x5-Z8350
+    pattern_atom = r'ATOM\s+([A-Z0-9\-]+)'
+    match = re.search(pattern_atom, text_upper)
+    if match:
+        return 'Atom ' + match.group(1)
+    
+    # AMD Ryzen
+    # Pattern: Ryzen 5 5500U, Ryzen 7 5800H, Ryzen 9 7940HS
+    pattern_ryzen = r'RYZEN\s+([3579])\s+(\d{4}[A-Z]*)'
+    match = re.search(pattern_ryzen, text_upper)
+    if match:
+        return 'Ryzen ' + match.group(1) + ' ' + match.group(2)
+    
+    # AMD Athlon
+    # Pattern: Athlon Silver 3050U, Athlon Gold 3150U
+    pattern_athlon = r'ATHLON\s+(SILVER\s+|GOLD\s+)?([A-Z0-9\-]+)'
+    match = re.search(pattern_athlon, text_upper)
+    if match:
+        variant = match.group(1).strip() if match.group(1) else ''
+        model = match.group(2)
+        return f"Athlon {variant} {model}".strip().replace('  ', ' ')
+    
+    # Apple M1/M2/M3
+    # Pattern: M1, M2 Pro, M3 Max, M3 Ultra
+    pattern_apple = r'\b(M[123])\s*(PRO|MAX|ULTRA)?\b'
+    match = re.search(pattern_apple, text_upper)
+    if match:
+        chip = match.group(1)
+        variant = match.group(2) if match.group(2) else ''
+        return (chip + ' ' + variant).strip()
+    
+    return None
+
 
 def fill_missing_cpu_brand(price):
-  """
-  Fill missing CPU brand berdasarkan harga
-  
-  Args:
-      price: Harga laptop (Rupiah)
-  
-  Returns:
-      str: 'Intel', 'AMD', atau 'Apple'
-  """
-  if pd.isna(price):
-      return None
-  
-  # Logic berdasarkan market share dan price point
-  if price < 5000000:
-      return 'Intel'  # Budget: Intel dominan (Celeron/Pentium/i3)
-  elif price < 10000000:
-      return 'Intel'  # Mid-range: Intel masih dominan
-  elif price < 20000000:
-      return 'Intel'  # High-end: Mix, tapi Intel lebih umum
-  elif price < 30000000:
-      return 'Intel'  # Premium: Intel i7/i9
-  else:
-      return 'Intel'  # Ultra premium: Mix Intel/Apple, default Intel
+    """
+    Fill missing CPU brand berdasarkan harga
+    
+    Args:
+        price: Harga laptop (Rupiah)
+    
+    Returns:
+        str: 'Intel', 'AMD', atau 'Apple'
+    """
+    if pd.isna(price):
+        return None
+    
+    # Logic berdasarkan market share dan price point
+    if price < 5000000:
+        return 'Intel'  # Budget: Intel dominan (Celeron/Pentium/i3)
+    elif price < 10000000:
+        return 'Intel'  # Mid-range: Intel masih dominan
+    elif price < 20000000:
+        return 'Intel'  # High-end: Mix, tapi Intel lebih umum
+    elif price < 30000000:
+        return 'Intel'  # Premium: Intel i7/i9
+    else:
+        return 'Intel'  # Ultra premium: Mix Intel/Apple, default Intel
 
 
 def fill_missing_cpu_model(price, cpu_brand=None):
-  """
-  Fill missing CPU model berdasarkan harga dan brand
-  
-  Args:
-      price: Harga laptop (Rupiah)
-      cpu_brand: CPU brand ('Intel', 'AMD', 'Apple')
-  
-  Returns:
-      str: CPU model estimate
-  """
-  if pd.isna(price):
-      return None
-  
-  # Jika brand tidak diketahui, assume Intel (paling umum)
-  if pd.isna(cpu_brand):
-      cpu_brand = 'Intel'
-  
-  if cpu_brand == 'Intel':
-      if price < 3000000:
-          return 'Celeron'
-      elif price < 5000000:
-          return 'i3-Gen10'
-      elif price < 7000000:
-          return 'i3-Gen11'
-      elif price < 10000000:
-          return 'i5-Gen11'
-      elif price < 15000000:
-          return 'i5-Gen12'
-      elif price < 20000000:
-          return 'i7-Gen12'
-      elif price < 30000000:
-          return 'i7-Gen13'
-      else:
-          return 'i9-Gen13'
-  
-  elif cpu_brand == 'AMD':
-      if price < 5000000:
-          return 'Ryzen 3'
-      elif price < 10000000:
-          return 'Ryzen 5'
-      elif price < 20000000:
-          return 'Ryzen 7'
-      else:
-          return 'Ryzen 9'
-  
-  elif cpu_brand == 'Apple':
-      if price < 15000000:
-          return 'M1'
-      elif price < 25000000:
-          return 'M2'
-      else:
-          return 'M3'
-  
-  return None
+    """
+    Fill missing CPU model berdasarkan harga dan brand
+    
+    Args:
+        price: Harga laptop (Rupiah)
+        cpu_brand: CPU brand ('Intel', 'AMD', 'Apple')
+    
+    Returns:
+        str: CPU model estimate
+    """
+    if pd.isna(price):
+        return None
+    
+    # Jika brand tidak diketahui, assume Intel (paling umum)
+    if pd.isna(cpu_brand):
+        cpu_brand = 'Intel'
+    
+    if cpu_brand == 'Intel':
+        if price < 3000000:
+            return 'Celeron'
+        elif price < 5000000:
+            return 'i3-Gen10'
+        elif price < 7000000:
+            return 'i3-Gen11'
+        elif price < 10000000:
+            return 'i5-Gen11'
+        elif price < 15000000:
+            return 'i5-Gen12'
+        elif price < 20000000:
+            return 'i7-Gen12'
+        elif price < 30000000:
+            return 'i7-Gen13'
+        else:
+            return 'i9-Gen13'
+    
+    elif cpu_brand == 'AMD':
+        if price < 5000000:
+            return 'Ryzen 3'
+        elif price < 10000000:
+            return 'Ryzen 5'
+        elif price < 20000000:
+            return 'Ryzen 7'
+        else:
+            return 'Ryzen 9'
+    
+    elif cpu_brand == 'Apple':
+        if price < 15000000:
+            return 'M1'
+        elif price < 25000000:
+            return 'M2'
+        else:
+            return 'M3'
+    
+    return None
+
+def extract_cpu_series(cpu_model):
+    if not isinstance(cpu_model, str):
+        return ""
+    
+    cpu_model = cpu_model.strip().upper()
+    print(cpu_model)
+    # Pattern untuk Intel: i3, i5, i7, i9, N100, N150, dll.
+    intel_pattern = r'\b(I[3579]|N[0-9]+[A-Z]*|CELERON|PENTIUM|ATOM|CORE\s*(?:ULTRA)?\s*[0-9]?)\b'
+    # Pattern untuk AMD: Ryzen 3, Ryzen 5, Ryzen 7, Ryzen 9, Athlon, dll.
+    amd_pattern = r'\b(RYZEN\s*[3579]?|ATHLON|RYZEN\s*AI\s*[0-9]?|RYZEN\s*(?:[0-9]+\s*)?[A-Z]*)\b'
+    # Pattern untuk Apple: M1, M2, M3, M4
+    apple_pattern = r'\b(M[1234])\b'
+    
+    # Cari Intel
+    intel_match = re.search(intel_pattern, cpu_model, re.IGNORECASE)
+    if intel_match:
+        series = intel_match.group(1)
+        # Rapikan: hilangkan spasi berlebih
+        series = re.sub(r'\s+', ' ', series.strip())
+        # Untuk "CORE ULTRA 7" -> "ULTRA 7"
+        if "CORE ULTRA" in series.upper():
+            series = series.replace("CORE ", "")
+        return series.title()
+    
+    # Cari AMD
+    amd_match = re.search(amd_pattern, cpu_model, re.IGNORECASE)
+    if amd_match:
+        series = amd_match.group(1)
+        # Rapikan: hilangkan spasi berlebih
+        series = re.sub(r'\s+', ' ', series.strip())
+        # Untuk "RYZEN AI 7" -> "RYZEN AI 7" (tetap)
+        return series.title()
+    
+    # Cari Apple
+    apple_match = re.search(apple_pattern, cpu_model, re.IGNORECASE)
+    if apple_match:
+        return apple_match.group(1).upper()
+    
+    # Jika tidak ditemukan, kembalikan string kosong atau model asli
+    return ""
 
 def clean_dataset(path = ''):
   df = pd.read_csv(path)
@@ -504,8 +565,12 @@ def clean_dataset(path = ''):
       else fill_missing_cpu_model(row['price'], row['cpu_brand']), 
       axis=1
   )
+  
+  df['cpu_series'] = df['cpu_model'].apply(extract_cpu_series)
+#   print('data yg null : ',df.isna().sum())
+#   print('data yg null : ',df.isnull().sum())
+  
 
-  # df.to_csv("../data/processed/laptops_clean.csv", index=False)
   df.to_csv('../data/processed/laptops_clean.csv', index=False)
   df.to_excel("../data/processed/laptops_clean.xlsx", index=False)
   print("Saved cleaned dataset → data/processed/laptops_clean.csv")
