@@ -1,8 +1,8 @@
 import os
 import sys
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if ROOT not in sys.path:
-  sys.path.insert(0, ROOT)
+ROOT = os.path.dirname(os.path.abspath(__file__))   # → path ke /app
+PROJECT_ROOT = os.path.dirname(ROOT)                # → path ke /project
+MODEL_DIR = os.path.join(PROJECT_ROOT, "models", "traditional")
   
 import streamlit as st
 import joblib
@@ -12,7 +12,10 @@ from src.preprocessing import preprocess_input
 
 # Load model
 # model = joblib.load("/home/ooka/BACKUP ARCH/jinx/Belajar/ML udemy/Regression/project/models/traditional/xgboost.pkl")
-model = joblib.load("../models/traditional/xgboost.pkl")
+# model = joblib.load("../models/traditional/xgboost.pkl")
+model_path = os.path.join(MODEL_DIR, "xgboost.pkl")
+model = joblib.load(model_path)
+
 
 # Load encoder (cpu_series → integer)
 # encoder_cpu_series = joblib.load("../models/cpu_series_encoder.pkl")
