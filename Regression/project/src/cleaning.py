@@ -494,7 +494,7 @@ def extract_cpu_series(cpu_model):
         return ""
     
     cpu_model = cpu_model.strip().upper()
-    print(cpu_model)
+    # print(cpu_model)
     # Pattern untuk Intel: i3, i5, i7, i9, N100, N150, dll.
     intel_pattern = r'\b(I[3579]|N[0-9]+[A-Z]*|CELERON|PENTIUM|ATOM|CORE\s*(?:ULTRA)?\s*[0-9]?)\b'
     # Pattern untuk AMD: Ryzen 3, Ryzen 5, Ryzen 7, Ryzen 9, Athlon, dll.

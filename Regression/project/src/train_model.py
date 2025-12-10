@@ -95,10 +95,10 @@ for name, model in models.items():
     results.append([name, mae, rmse, r2])
 
     # Save model
-    # file_path = f"../models/traditional/{name.replace(' ', '_').lower()}.pkl"
-    # joblib.dump(pipeline, file_path)
+    file_path = f"../models/traditional/{name.replace(' ', '_').lower()}.pkl"
+    joblib.dump(pipeline, file_path)
 
-    # print(f"Saved model: {file_path}")
+    print(f"Saved model: {file_path}")
     print(f"MAE: {mae:,.0f}")
     print(f"RMSE: {rmse:,.0f}")
     print(f"R2: {r2:.3f}")
