@@ -72,8 +72,8 @@ models = {
 # Train & Evaluate Models
 results = []
 
-if not os.path.exists("../models"):
-    os.makedirs("../models")
+if not os.path.exists("../models/traditional/"):
+    os.makedirs("../models/traditional/")
 
 for name, model in models.items():
 
@@ -95,7 +95,7 @@ for name, model in models.items():
     results.append([name, mae, rmse, r2])
 
     # Save model
-    # file_path = f"../models/{name.replace(' ', '_').lower()}.pkl"
+    # file_path = f"../models/traditional/{name.replace(' ', '_').lower()}.pkl"
     # joblib.dump(pipeline, file_path)
 
     # print(f"Saved model: {file_path}")
