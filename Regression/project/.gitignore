@@ -1,2 +1,6 @@
-./models/*
-./data/*
+./models/export/*
+./models/feature/*
+./models/hyperparameter/*
+./models/traditional/*
+./data/processed/*
+./data/raw/*
