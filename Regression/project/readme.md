@@ -75,7 +75,7 @@ XGBoost memberikan hasil terbaik.
 
 ---
 
-## 🗂 **Struktur Folder Project**
+<!-- ## 🗂 **Struktur Folder Project**
 
 project/
 │── data/
@@ -109,7 +109,7 @@ project/
 │── requirements.txt
 │── README.md
 
----
+--- -->
 
 ## 📊 **Hasil Evaluasi Model**
 
@@ -128,7 +128,7 @@ XGBoost memberikan performa terbaik dan digunakan sebagai model final untuk depl
 
 ### 1️⃣ Clone Repository
 ```bash
-git clone https://github.com/username/project-laptop-price
+git clone https://github.com/ookapratama/My_ML_Course.git
 cd project-laptop-price
 pip install -r requirements.txt
 streamlit run app/app.py
@@ -145,7 +145,8 @@ streamlit run app/app.py
 - Storage (GB)
 
 ## Author
-Nama: Ooka Pratama
-Website Portofolio : https://ooka.my.id/
-Portofolio GitHub: https://github.com/ookapratama/
-Email: ookapratama@gmail.com
+Nama: Ooka Pratama <br>
+Website Portofolio : https://ooka.my.id/ <br>
+Portofolio GitHub: https://github.com/ookapratama/ <br>
+Email: ookapratama@gmail.com <br>
+
