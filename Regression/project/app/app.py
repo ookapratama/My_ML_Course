@@ -11,7 +11,8 @@ from src.preprocessing import preprocess_input
 
 
 # Load model
-model = joblib.load("/home/ooka/BACKUP ARCH/jinx/Belajar/ML udemy/Regression/project/models/traditional/xgboost.pkl")
+# model = joblib.load("/home/ooka/BACKUP ARCH/jinx/Belajar/ML udemy/Regression/project/models/traditional/xgboost.pkl")
+model = joblib.load("../models/traditional/xgboost.pkl")
 
 # Load encoder (cpu_series → integer)
 # encoder_cpu_series = joblib.load("../models/cpu_series_encoder.pkl")
