@@ -1,13 +1,20 @@
+import os
+import sys
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if ROOT not in sys.path:
+  sys.path.insert(0, ROOT)
+  
 import streamlit as st
 import joblib
 import pandas as pd
 from src.preprocessing import preprocess_input
 
+
 # Load model
-model = joblib.load("model/best_model.pkl")
+model = joblib.load("/home/ooka/BACKUP ARCH/jinx/Belajar/ML udemy/Regression/project/models/traditional/xgboost.pkl")
 
 # Load encoder (cpu_series → integer)
-encoder_cpu_series = joblib.load("model/cpu_series_encoder.pkl")
+# encoder_cpu_series = joblib.load("../models/cpu_series_encoder.pkl")
 
 st.title("💻 Prediksi Harga Laptop")
 st.write("Masukkan spesifikasi laptop untuk memprediksi harganya.")
@@ -15,6 +22,7 @@ st.write("Masukkan spesifikasi laptop untuk memprediksi harganya.")
 # Input form
 brand = st.selectbox("Brand Laptop", ["Asus", "Acer", "Dell", "HP", "Lenovo", "MSI", "Apple", "Other"])
 cpu_series = st.selectbox("CPU Series", ["i3", "i5", "i7", "i9", "Ryzen 3", "Ryzen 5", "Ryzen 7", "M1", "M2", "M3"])
+cpu_brand = st.selectbox("CPU Brand", ["Intel", "AMD", "Apple"])
 ram_gb = st.selectbox("RAM (GB)", [4, 8, 16, 32, 64])
 storage_gb = st.selectbox("Storage (GB)", [128, 256, 512, 1024, 2048])
 
@@ -23,11 +31,12 @@ if st.button("Prediksi Harga"):
   input_data = {
       "brand": brand,
       "cpu_series": cpu_series,
+      "cpu_brand": cpu_brand,
       "ram_gb": ram_gb,
       "storage_gb": storage_gb,
   }
 
-  df_preprocessed = preprocess_input(input_data, encoder_cpu_series)
+  df_preprocessed = preprocess_input(input_data)
 
   prediction = model.predict(df_preprocessed)[0]
 
