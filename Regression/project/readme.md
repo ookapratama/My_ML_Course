@@ -75,7 +75,7 @@ Aplikasi dapat dicoba secara langsung melalui link berikut:
 
 ---
 
-## **Diagram Alur (Mermaid)
+## **Diagram Alur (Mermaid)**
 ```mermaid
 flowchart TD
   A[Scraping Data<br/>Tokopedia API] --> B[Raw Data CSV]
