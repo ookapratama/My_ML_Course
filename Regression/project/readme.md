@@ -76,18 +76,19 @@ Aplikasi dapat dicoba secara langsung melalui link berikut:
 ---
 
 ## **Diagram Alur (Mermaid)
+```mermaid
 flowchart TD
-  A[Scraping Data \\ Tokopedia API] --> B[Raw Data CSV]
+  A[Scraping Data<br/>Tokopedia API] --> B[Raw Data CSV]
   B --> C[Cleaning & Preprocessing]
   C --> D[Feature Engineering]
   D --> E[Exploratory Data Analysis]
-  E --> F[Modeling \\ Regression Algorithms]
+  E --> F[Modeling<br/>Regression Algorithms]
   F --> G[Hyperparameter Tuning]
   G --> H[Evaluate Model Performance]
-  H --> I[Export Model (Joblib)]
+  H --> I[Export Model Joblib]
   I --> J[Deployment Streamlit App]
   J --> K[User Predicts Laptop Price]
-
+```
 ---
 
 ## 🧠 **Cara Menjalankan Proyek Secara Lokal**
