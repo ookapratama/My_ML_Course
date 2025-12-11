@@ -77,14 +77,7 @@ XGBoost memberikan hasil terbaik.
 
 ## 🗂 **Struktur Folder Project**
 
-Project
-|-- app
-|   |-- app.py
-|   |-- __init__.py
-|-- data
-|   |-- processed
-|
-
+```
 project
 ├── app
 │   ├── app.py
@@ -121,7 +114,7 @@ project
     ├── train_feature_engineering.py
     ├── train_hyperparameter.py
     └── train_model.py
-
+```
 ---
 
 ## 📊 **Hasil Evaluasi Model**
