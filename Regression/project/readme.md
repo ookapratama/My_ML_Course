@@ -140,8 +140,21 @@ pip install -r requirements.txt
 streamlit run app/app.py
 ```
 
-### Demo Aplikasi
-👉 Live Demo (Streamlit Cloud): https://ookapratama-my-ml-course-regressionprojectappapp-jav0la.streamlit.app/
+## 📸 Demo / Preview Aplikasi
+
+Berikut adalah tampilan aplikasi prediksi harga laptop yang dibangun menggunakan Streamlit:
+
+### 🔮 Halaman Prediksi
+![App Preview](preview.png)
+
+
+### 🌐 Live Demo
+Aplikasi dapat dicoba secara langsung melalui link berikut:
+
+👉 **https://ookapratama-my-ml-course-regressionprojectappapp-jav0la.streamlit.app/**
+
+---
+
 
 ## **Input yang didukung Model**
 - Brand
