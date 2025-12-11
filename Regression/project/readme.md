@@ -75,41 +75,46 @@ XGBoost memberikan hasil terbaik.
 
 ---
 
-<!-- ## 🗂 **Struktur Folder Project**
+## 🗂 **Struktur Folder Project**
 
-project/
-│── data/
-│ ├── raw/
-│ ├── processed/
-│
-│── src/
-│ ├── scraper.py
-│ ├── cleaning.py
-│ ├── preprocessing.py
-│ ├── train_model.py
-│ ├── feature_engineering.py
-│ ├── hyperparameter.py
-│ ├── evaluate_models.py
-│
-│── models/
-│ ├── traditional/
-│ │ ├── xgboost.pkl
-│ ├── cpu_series_encoder.pkl
-│
-│── notebooks/
-│ ├── scraping.ipynb
-│ ├── cleaning.ipynb
-│ ├── eda.ipynb
-│ ├── modeling.ipynb
-│ ├── hyperparameter.ipynb
-│
-│── app/
-│ ├── app.py # Streamlit UI
-│
-│── requirements.txt
-│── README.md
+project
+├── app
+│   ├── app.py
+│   └── __init__.py
+├── data
+│   ├── processed
+│   │   ├── laptops_clean.csv
+│   │   └── laptops_clean.xlsx
+│   └── raw
+│       ├── laptops_filtered.csv
+│       └── laptops_filtered.xlsx
+├── models
+│   ├── feature
+│   ├── hyperparameter
+│   └── traditional
+│       ├── linear_regression.pkl
+│       ├── random_forest.pkl
+│       └── xgboost.pkl
+├── notebooks
+│   ├── eda.ipynb
+│   └── modelling.ipynb
+├── readme.md
+├── requirements.txt
+├── .gitignore
+└── src
+    ├── cleaning.py
+    ├── evaluate_models.py
+    ├── __init__.py
+    ├── preprocessing.py
+    ├── __pycache__
+    │   ├── __init__.cpython-313.pyc
+    │   └── preprocessing.cpython-313.pyc
+    ├── scraper_via_api.py
+    ├── train_feature_engineering.py
+    ├── train_hyperparameter.py
+    └── train_model.py
 
---- -->
+---
 
 ## 📊 **Hasil Evaluasi Model**
 
