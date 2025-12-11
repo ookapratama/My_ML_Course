@@ -11,21 +11,6 @@ Project ini dirancang sebagai portofolio profesional untuk menunjukkan kemampuan
 - Deployment model ML
 - Penerapan end-to-end machine learning workflow
 
----
-
-## **🛠 Teknologi yang Digunakan**
-
-| Teknologi | Logo |
-|-----------|------|
-| **Python** | ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) |
-| **Pandas** | ![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white) |
-| **NumPy** | ![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white) |
-| **Scikit-Learn** | ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white) |
-| **XGBoost** | ![XGBoost](https://img.shields.io/badge/XGBoost-FF6F00?style=for-the-badge&logo=xgboost&logoColor=white) |
-| **Matplotlib** | ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=matplotlib&logoColor=white) |
-| **Seaborn** | ![Seaborn](https://img.shields.io/badge/Seaborn-5599FF?style=for-the-badge) |
-| **Streamlit** | ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white) |
-| **Tokopedia GraphQL API** | ![GraphQL](https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white) |
 
 ---
 
@@ -75,6 +60,68 @@ XGBoost memberikan hasil terbaik.
 
 ---
 
+## 📸 Demo / Preview Aplikasi
+
+Berikut adalah tampilan aplikasi prediksi harga laptop yang dibangun menggunakan Streamlit:
+
+### 🔮 Halaman Prediksi
+![App Preview](https://github.com/ookapratama/My_ML_Course/blob/main/Regression/project/screenshots/preview.png)
+
+
+### 🌐 Live Demo
+Aplikasi dapat dicoba secara langsung melalui link berikut:
+
+👉 **https://ookapratama-my-ml-course-regressionprojectappapp-jav0la.streamlit.app/**
+
+---
+
+## **Diagram Alur (Mermaid)
+flowchart TD
+  A[Scraping Data \\ Tokopedia API] --> B[Raw Data CSV]
+  B --> C[Cleaning & Preprocessing]
+  C --> D[Feature Engineering]
+  D --> E[Exploratory Data Analysis]
+  E --> F[Modeling \\ Regression Algorithms]
+  F --> G[Hyperparameter Tuning]
+  G --> H[Evaluate Model Performance]
+  H --> I[Export Model (Joblib)]
+  I --> J[Deployment Streamlit App]
+  J --> K[User Predicts Laptop Price]
+
+---
+
+## 🧠 **Cara Menjalankan Proyek Secara Lokal**
+
+### 1️⃣ Clone Repository
+```bash
+git clone https://github.com/ookapratama/My_ML_Course.git
+cd project-laptop-price
+pip install -r requirements.txt
+streamlit run app/app.py
+```
+---
+
+## 📊 **Hasil Evaluasi Model**
+
+| Model              | MAE          | RMSE        | R² Score |
+|-------------------|--------------|-------------|----------|
+| Linear Regression | 2.73 juta    | besar       | 0.71     |
+| Random Forest     | 2.45 juta    | lebih kecil | 0.75     |
+| **XGBoost**       | **2.44 juta**| **terbaik** | **0.76** |
+
+**Kesimpulan:**  
+XGBoost memberikan performa terbaik dan digunakan sebagai model final untuk deployment.
+
+--- 
+
+## **Input yang didukung Model**
+- Brand
+- CPU Series
+- CPU Brand
+- RAM (GB)
+- Storage (GB)
+
+---
 ## 🗂 **Struktur Folder Project**
 
 ```
@@ -115,53 +162,24 @@ project
     ├── train_hyperparameter.py
     └── train_model.py
 ```
----
-
-## 📊 **Hasil Evaluasi Model**
-
-| Model              | MAE          | RMSE        | R² Score |
-|-------------------|--------------|-------------|----------|
-| Linear Regression | 2.73 juta    | besar       | 0.71     |
-| Random Forest     | 2.45 juta    | lebih kecil | 0.75     |
-| **XGBoost**       | **2.44 juta**| **terbaik** | **0.76** |
-
-**Kesimpulan:**  
-XGBoost memberikan performa terbaik dan digunakan sebagai model final untuk deployment.
 
 ---
 
-## 🧠 **Cara Menjalankan Proyek Secara Lokal**
+## **🛠 Teknologi yang Digunakan**
 
-### 1️⃣ Clone Repository
-```bash
-git clone https://github.com/ookapratama/My_ML_Course.git
-cd project-laptop-price
-pip install -r requirements.txt
-streamlit run app/app.py
-```
-
-## 📸 Demo / Preview Aplikasi
-
-Berikut adalah tampilan aplikasi prediksi harga laptop yang dibangun menggunakan Streamlit:
-
-### 🔮 Halaman Prediksi
-![App Preview](https://github.com/ookapratama/My_ML_Course/blob/main/Regression/project/screenshots/preview.png)
-
-
-### 🌐 Live Demo
-Aplikasi dapat dicoba secara langsung melalui link berikut:
-
-👉 **https://ookapratama-my-ml-course-regressionprojectappapp-jav0la.streamlit.app/**
+| Teknologi | Logo |
+|-----------|------|
+| **Python** | ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) |
+| **Pandas** | ![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white) |
+| **NumPy** | ![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white) |
+| **Scikit-Learn** | ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white) |
+| **XGBoost** | ![XGBoost](https://img.shields.io/badge/XGBoost-FF6F00?style=for-the-badge&logo=xgboost&logoColor=white) |
+| **Matplotlib** | ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=matplotlib&logoColor=white) |
+| **Seaborn** | ![Seaborn](https://img.shields.io/badge/Seaborn-5599FF?style=for-the-badge) |
+| **Streamlit** | ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white) |
+| **Tokopedia GraphQL API** | ![GraphQL](https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white) |
 
 ---
-
-
-## **Input yang didukung Model**
-- Brand
-- CPU Series
-- CPU Brand
-- RAM (GB)
-- Storage (GB)
 
 ## Author
 Nama: Ooka Pratama <br>
