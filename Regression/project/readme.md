@@ -145,7 +145,7 @@ streamlit run app/app.py
 Berikut adalah tampilan aplikasi prediksi harga laptop yang dibangun menggunakan Streamlit:
 
 ### 🔮 Halaman Prediksi
-![App Preview](preview.png)
+![App Preview](https://github.com/ookapratama/My_ML_Course/blob/main/Regression/project/screenshots/preview.png)
 
 
 ### 🌐 Live Demo
