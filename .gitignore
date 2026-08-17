@@ -1,0 +1,40 @@
+# --- Python / uv ---
+__pycache__/
+*.py[oc]
+*.egg-info/
+build/
+dist/
+wheels/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+# uv.lock is intentionally NOT ignored — commit it for reproducible installs
+
+# --- Node / pnpm (dashboard) ---
+node_modules/
+dashboard/dist/
+dashboard/.vite/
+
+# --- Env & secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Docker / service data volumes ---
+n8n/data/
+n8n/.n8n/
+pgdata/
+postgres-data/
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- Claude Code local settings ---
+.claude/settings.local.json
+
+# --- Jupyter ---
+.ipynb_checkpoints/
