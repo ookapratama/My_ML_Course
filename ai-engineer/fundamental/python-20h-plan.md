@@ -28,11 +28,11 @@
 - **Resources:** [Official Python Tutorial ch. 3–5](https://docs.python.org/3/tutorial/), [uv docs](https://docs.astral.sh/uv/), [Learn X in Y Minutes: Python](https://learnxinyminutes.com/docs/python/)
 - **15-min review** ✅
 
-### [ ] Session 2 — Core data structures
+### [x] Session 2 — Core data structures
 - [x] Lesson 1 — `list`, `dict`, `set`, `tuple`: when to use which; mutability rules; hashability — `fundamental/lesson_one` (folded into main.py notes)
 - [x] Lesson 2 — Slicing (`a[1:5]`, `a[::-1]`), unpacking (`a, *rest = items`) — `fundamental/lesson_two/index.py`
 - [x] Lesson 3 — **Comprehensions** — the #1 Python idiom (`[x*2 for x in xs if x > 0]` ≈ `xs.filter().map()`) — `fundamental/session_two/lesson_three/index.py`
-- [ ] Lesson 4 — Sorting with `key=` (≈ TS `sort(compareFn)` but by key extraction), `sorted` vs `.sort()` — `fundamental/lesson_four/index.py`
+- [x] Lesson 4 — Sorting with `key=` (≈ TS `sort(compareFn)` but by key extraction), `sorted` vs `.sort()` — `fundamental/session_two/lesson_four/index.py`
 - **Resources:** [Official Tutorial ch. 5 (Data Structures)](https://docs.python.org/3/tutorial/datastructures.html), [Real Python: List Comprehensions](https://realpython.com/list-comprehension-python/)
 - **15-min review** ✅ (do this after Lesson 4, once all sub-lessons are `[x]`)
 
