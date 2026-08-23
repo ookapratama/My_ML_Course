@@ -38,7 +38,7 @@
 
 ### [ ] Session 3 — Functions deep-dive
 - [x] Lesson 1 — `*args` / `**kwargs`, keyword-only args (`def f(*, timeout=5)`) — `fundamental/session_three/lesson_one/index.py`
-- [ ] Lesson 2 — **The mutable-default-argument pitfall** (`def f(items=[])` — the classic bug) — `fundamental/session_three/lesson_two/index.py`
+- [x] Lesson 2 — **The mutable-default-argument pitfall** (`def f(items=[])` — the classic bug) — `fundamental/session_three/lesson_two/index.py`
 - [ ] Lesson 3 — Closures and scope (`nonlocal`), lambdas (and why Python keeps them small) — `fundamental/session_three/lesson_three/index.py`
 - [ ] Lesson 4 — **Decorators** (≈ Express middleware / TS HOF) — write one by hand; `functools.wraps`, `functools.lru_cache` — `fundamental/session_three/lesson_four/index.py`
 - **Resources:** [Real Python: Primer on Decorators](https://realpython.com/primer-on-python-decorators/), [Real Python: *args and **kwargs](https://realpython.com/python-kwargs-and-args/)
