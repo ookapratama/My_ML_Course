@@ -37,12 +37,12 @@
 - **15-min review** ✅ (do this after Lesson 4, once all sub-lessons are `[x]`)
 
 ### [ ] Session 3 — Functions deep-dive
-- `*args` / `**kwargs`, keyword-only args (`def f(*, timeout=5)`)
-- **The mutable-default-argument pitfall** (`def f(items=[])` — the classic bug)
-- Closures and scope (`nonlocal`), lambdas (and why Python keeps them small)
-- **Decorators** (≈ Express middleware / TS HOF) — write one by hand; `functools.wraps`, `functools.lru_cache`
+- [x] Lesson 1 — `*args` / `**kwargs`, keyword-only args (`def f(*, timeout=5)`) — `fundamental/session_three/lesson_one/index.py`
+- [ ] Lesson 2 — **The mutable-default-argument pitfall** (`def f(items=[])` — the classic bug) — `fundamental/session_three/lesson_two/index.py`
+- [ ] Lesson 3 — Closures and scope (`nonlocal`), lambdas (and why Python keeps them small) — `fundamental/session_three/lesson_three/index.py`
+- [ ] Lesson 4 — **Decorators** (≈ Express middleware / TS HOF) — write one by hand; `functools.wraps`, `functools.lru_cache` — `fundamental/session_three/lesson_four/index.py`
 - **Resources:** [Real Python: Primer on Decorators](https://realpython.com/primer-on-python-decorators/), [Real Python: *args and **kwargs](https://realpython.com/python-kwargs-and-args/)
-- **15-min review** ✅
+- **15-min review** ✅ (do this after Lesson 4, once all sub-lessons are `[x]`)
 
 ### [ ] Session 4 — OOP the Python way
 - Classes, `__init__`, `self` (explicit, unlike `this`), dunder methods (`__repr__`, `__eq__`, `__len__`)
