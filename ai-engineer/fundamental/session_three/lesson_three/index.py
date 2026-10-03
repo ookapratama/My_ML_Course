@@ -124,4 +124,29 @@ def make_tracker():
 tracker = make_tracker()
 tracker['add']("apple")
 tracker['add']("banana")
-print(tracker["get_all"]())
+# print(tracker["get_all"]())
+
+# mini challenge
+# Tulis function make_accumulator(initial: int) yang:
+# - Menerima angka awal
+# - Return function add(n) yang menambah angka itu ke accumulator
+# - Setiap kali add() dipanggil, accumulator bertambah dan return nilai baru
+
+# Contoh:
+# acc = make_accumulator(10)
+# print(acc(5))   # 15 (10 + 5)
+# print(acc(3))   # 18 (15 + 3)
+# print(acc(2))   # 20 (18 + 2)
+
+def make_accumulator(initial: int) :
+    x = initial # 10
+    def add(n) : 
+        nonlocal x
+        x = x + n
+        return x
+    return add
+
+acc = make_accumulator(10)
+print(acc(5))
+print(acc(3))
+print(acc(2))
