@@ -46,12 +46,13 @@
 - **15-min review** ✅ (do this after Lesson 4, once all sub-lessons are `[x]`)
 
 ### [ ] Session 4 — OOP the Python way
-- Classes, `__init__`, `self` (explicit, unlike `this`), dunder methods (`__repr__`, `__eq__`, `__len__`)
-- `@dataclass` — 90% of your classes should be this or Pydantic
-- **Pydantic v2 models** — validation + serialization (≈ Zod); this is the backbone of FastAPI and Veritas' typed interfaces
-- `@property`, class vs instance attributes; when NOT to use classes (modules + functions are fine)
+- [x] Lesson 1 — **Class dan object**: `class`, instance, attribute, `__init__`, `self` (explicit, unlike `this`) — `fundamental/session_four/lesson_one/index.py`
+- [ ] Lesson 2 — **Method dan dunder methods**: method biasa, `__repr__`, `__eq__`, `__len__` — `fundamental/session_four/lesson_two/index.py`
+- [ ] Lesson 3 — **`@dataclass`** — 90% of your classes should be this or Pydantic — `fundamental/session_four/lesson_three/index.py`
+- [ ] Lesson 4 — **Pydantic v2 models** — validation + serialization (≈ Zod); this is the backbone of FastAPI and Veritas' typed interfaces — `fundamental/session_four/lesson_four/index.py`
+- [ ] Lesson 5 — **`@property`**, class vs instance attributes; when NOT to use classes (modules + functions are fine) — `fundamental/session_four/lesson_five/index.py`
 - **Resources:** [Real Python: Data Classes](https://realpython.com/python-data-classes/), [Pydantic docs — Models](https://docs.pydantic.dev/latest/concepts/models/)
-- **15-min review** ✅
+- **15-min review** ✅ (do this after Lesson 5, once all sub-lessons are `[x]`)
 
 ### [ ] Session 5 — Typing, errors, context managers
 - Type hints: `list[str]`, `dict[str, int]`, `Optional`/`| None`, `TypeVar`, generics
