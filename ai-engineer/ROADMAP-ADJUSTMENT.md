@@ -155,6 +155,15 @@ Ditambah setiap kali ada istilah baru.
 - **`self`** — object yang sedang diisi atau dipakai. Parameter pertama method, **dikirim Python otomatis**, tidak ditulis saat memanggil.
 - **Class attribute vs instance attribute** — attribute di dalam class dipakai bersama. Python mencari ke object dulu, baru ke class-nya.
 - **`TypeError`** — error karena pemakaian yang tidak sesuai, misalnya jumlah argumen tidak cocok dengan jumlah parameter.
+- **Method** — function yang ditulis di dalam class. Parameter pertamanya `self`, dikirim Python otomatis.
+- **Dunder method** — method berawalan dan berakhiran dua garis bawah (`__init__`). Tidak dipanggil sendiri; Python memanggilnya pada situasi tertentu.
+- **`__repr__`** — menentukan tampilan object sebagai teks (`print(o)`, debugger). Harus `return` string, bukan `print`.
+- **`__eq__`** — menentukan arti `==` untuk class. Bawaannya hanya menanyakan "object yang sama persis?".
+- **`isinstance(x, Kelas)`** — `True` kalau `x` adalah object dari `Kelas`.
+- **`NotImplemented`** — nilai khusus yang dikembalikan `__eq__` untuk berkata "saya tidak tahu cara membandingkan ini", agar Python mencoba sisi sebelahnya. Bukan `False`.
+- **`__len__`** — membuat `len(object)` bisa dipakai. Harus mengembalikan bilangan bulat.
+- **Unhashable** — object yang tidak bisa jadi key dictionary atau isi `set`. Terjadi kalau class mendefinisikan `__eq__` tanpa `__hash__`.
+- **`AttributeError`** — error karena membaca attribute yang tidak ada pada object itu.
 
 **Perencanaan**
 - **Capstone** — proyek penutup yang menggabungkan semua yang sudah dipelajari.

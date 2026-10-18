@@ -47,7 +47,7 @@
 
 ### [ ] Session 4 — OOP the Python way
 - [x] Lesson 1 — **Class dan object**: `class`, instance, attribute, `__init__`, `self` (explicit, unlike `this`) — `fundamental/session_four/lesson_one/index.py`
-- [ ] Lesson 2 — **Method dan dunder methods**: method biasa, `__repr__`, `__eq__`, `__len__` — `fundamental/session_four/lesson_two/index.py`
+- [x] Lesson 2 — **Method dan dunder methods**: method biasa, `__repr__`, `__eq__`, `__len__` — `fundamental/session_four/lesson_two/index.py`
 - [ ] Lesson 3 — **`@dataclass`** — 90% of your classes should be this or Pydantic — `fundamental/session_four/lesson_three/index.py`
 - [ ] Lesson 4 — **Pydantic v2 models** — validation + serialization (≈ Zod); this is the backbone of FastAPI and Veritas' typed interfaces — `fundamental/session_four/lesson_four/index.py`
 - [ ] Lesson 5 — **`@property`**, class vs instance attributes; when NOT to use classes (modules + functions are fine) — `fundamental/session_four/lesson_five/index.py`
