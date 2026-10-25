@@ -1,15 +1,15 @@
-# Roadmap Adjustment — DRAFT (2026-10-12, diperbarui 2026-10-17)
+# Roadmap Adjustment — DRAFT (2026-10-12, diperbarui 2026-10-25)
 
 > Status: rancangan untuk dibahas. Belum final.
 > Tidak mengubah `python-20h-plan.md`, `PROGRESS.md`, `product-plan.md`, atau `ai-engineering-learning-plan.md`.
-> Model dan metode belajar dibahas terpisah setelah roadmap ini disetujui.
+> **Revisi 2026-10-25:** Python track S4–S10 diganti 7 Misi berbasis hasil (lihat `fundamental/python-20h-plan.md`). Alasan: bosan karena belajar tanpa tujuan yang terlihat. Bagian di bawah yang menyebut S4–S10 sudah disesuaikan.
 
 ## Prinsip
 
-1. **Satu tulang punggung belajar:** Python track (S4–S10) lalu Veritas. Tidak ada jalur belajar kedua.
+1. **Satu tulang punggung belajar:** Python lewat 7 Misi (hasil terlihat tiap misi), lalu Veritas. Tidak ada jalur belajar kedua.
 2. **Data Engineering = lahan latihan dari pekerjaan** (`mch-airflow`), ditambah satu slot SQL kecil per minggu. Bukan jalur belajar tambahan.
 3. **Pekerjaan menang atas belajar.** Minggu yang kosong karena kerja adalah data, bukan kegagalan.
-4. **Veritas tidak dimulai sebelum Python track selesai** (aturan fase lama tetap berlaku).
+4. **Veritas penuh tidak dimulai sebelum Misi 5 (mini-RAG) jalan** (aturan lama "sebelum S10" diganti 2026-10-25). Misi 1–5 sendiri sudah memakai konsep RAG.
 5. **ambis-in adalah pekerjaan, bukan jalur belajar.** Ia boleh dipakai sebagai bahan banding konsep (RAG, eval), tapi tidak menambah kewajiban belajar.
 6. Kemajuan dinilai dari: bisa menjelaskan, bisa menerapkan, bisa men-debug. Bukan dari jumlah jam.
 
@@ -28,31 +28,31 @@ Total rencana sekitar 7 jam/minggu. Kapasitas yang disebutkan lebih besar, dan s
 
 | Tahap            | Perkiraan         | Python track                                           | SQL (lahan latihan: `mch-airflow`)                              | Hasil yang bisa ditunjukkan                                                                            |
 | ---------------- | ----------------- | ------------------------------------------------------ | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| A. Eksperimen    | Minggu 1–2        | S4: class, dataclass, Pydantic                         | Blok 1: grain, fan-out, jenis join                              | Model Pydantic untuk baris CSV sintetis + catatan satu halaman: kenapa join `profile_summary` berisiko |
-| B. Fondasi       | Minggu 3–6        | S5 (typing, error), S6 (generator), S7 (async)         | Blok 2: kunci unik, NULL, window, semantik upsert, rekonsiliasi | Skrip kecil mirip `compare_counts.py` untuk data sintetis                                              |
-| C. Penutup track | Minggu 7–9        | S8 (NumPy), S9 (file, pandas), S10 (capstone mini-RAG) | Blok 3: waktu dan zona waktu, JSON/array, full vs incremental   | Mini-RAG yang jalan end-to-end                                                                         |
-| D. Veritas       | Mulai setelah S10 | —                                                      | SQL dipakai langsung (pgvector, trace store)                    | Phase 0 lalu Phase 1 (cited answer), dengan gerbang artefak seperti di `product-plan.md`               |
+| A. Eksperimen    | Minggu 1–2        | Misi 1: class, dataclass, Pydantic, baca file          | Blok 1: grain, fan-out, jenis join                              | Model Pydantic untuk baris CSV sintetis + catatan satu halaman: kenapa join `profile_summary` berisiko |
+| B. Fondasi       | Minggu 3–6        | Misi 2 (chunking), Misi 3 (panggil LLM), Misi 4 (embedding) | Blok 2: kunci unik, NULL, window, semantik upsert, rekonsiliasi | Skrip kecil mirip `compare_counts.py` untuk data sintetis                                              |
+| C. Penutup track | Minggu 7–9        | Misi 5 (mini-RAG), Misi 6 (async), Misi 7 (ukur kualitas) | Blok 3: waktu dan zona waktu, JSON/array, full vs incremental   | Mini-RAG yang jalan end-to-end                                                                         |
+| D. Veritas       | Mulai setelah Misi 5 | —                                                      | SQL dipakai langsung (pgvector, trace store)                    | Phase 0 lalu Phase 1 (cited answer), dengan gerbang artefak seperti di `product-plan.md`               |
 
 Perkiraan waktunya jujur kasar. Kita koreksi di review minggu ke-2 berdasarkan kecepatan nyata.
 
 ## Target 31 Desember 2026
 
-Dihitung dari 13 Oktober: sekitar 11 minggu, sekitar 77 jam. Kebutuhan sekitar 30 jam (Python S4–S10 sekitar 14 jam, SQL tiga blok sekitar 12–15 jam; angka SQL adalah perkiraan, belum teruji). Targetnya diukur dari **jumlah minggu efektif**, bukan dari tanggal.
+Dihitung dari 13 Oktober: sekitar 11 minggu, sekitar 77 jam. Kebutuhan sekitar 30 jam (Python Misi 1–7 sekitar 14 jam, perkiraan baru, belum teruji; SQL tiga blok sekitar 12–15 jam; angka SQL adalah perkiraan, belum teruji). Targetnya diukur dari **jumlah minggu efektif**, bukan dari tanggal.
 
 | Level | Isi | Status |
 |---|---|---|
-| **Minimum (dijaga)** | Python S4–S7 selesai. SQL Blok 1–2 selesai. Review mingguan terisi | Komitmen |
-| **Ideal (tantangan)** | Sampai S10 (mini-RAG). SQL Blok 3 | Hanya kalau minggunya lancar |
-| **Bonus** | Veritas Phase 0 | Bukan target |
+| **Minimum (dijaga)** | Misi 1–3 selesai. SQL Blok 1 selesai. Review mingguan terisi | Komitmen |
+| **Ideal (tantangan)** | Misi 4–5 (mini-RAG jalan). SQL Blok 2 | Hanya kalau minggunya lancar |
+| **Bonus** | Misi 6–7, SQL Blok 3, Veritas Phase 0 | Bukan target |
 | **Di luar target** | Pindah karier | Dievaluasi Januari 2027, berdasarkan bukti kerja |
 
 Perkiraan posisi per skenario (kasar):
 
 | Skenario | Minggu efektif | Posisi 31 Desember |
 |---|---|---|
-| Lancar | sekitar 9 dari 11 | Python dan SQL selesai, Veritas Phase 0 selesai |
-| Realistis | sekitar 6–7 | S7–S8, SQL Blok 1–2 (**sama dengan target minimum**) |
-| Berat | sekitar 3–4 | S5–S6, SQL Blok 1 |
+| Lancar | sekitar 9 dari 11 | Misi 1–7 dan SQL Blok 1–2 selesai, Veritas Phase 0 mulai |
+| Realistis | sekitar 6–7 | Misi 4–5, SQL Blok 1 (**di atas target minimum**) |
+| Berat | sekitar 3–4 | Misi 2–3, SQL Blok 1 (**sekitar target minimum**) |
 
 Aturan: kalau di titik tinjau posisimu di bawah skenario Berat, **turunkan target, bukan tambah jam**.
 
@@ -107,9 +107,18 @@ Dicatat di vault: `Learning/Python untuk AI Engineering/Reviews/` (format `YYYY-
 - Catatan review mingguan disimpan di vault Obsidian (`Learning/`).
 - Tracking S1–S3 sudah dicatat sebagai snapshot di Overview topik di vault.
 
+## Sudah diputuskan (2026-10-25)
+
+- Kurikulum Python S4–S10 diganti 7 Misi berbasis hasil; lesson Python ditarik dari kebutuhan misi.
+- Sesi: tujuan satu kalimat di awal, 25 menit fokus + 5 menit jeda (maks 2 putaran), 3 pertanyaan pemahaman di akhir, lantai 15 menit hari kerja.
+- Skor pemahaman ditambahkan: `x/3` per sesi; per misi recall `x/5`, micro-exercise, dan tugas debug (rincian di `python-20h-plan.md`).
+- Beban minggu depan: tetap + lantai 15 menit, dicoba selama satu minggu lalu dinilai di review W43.
+- Target 31 Des diturunkan: minimum Misi 1–3 + SQL Blok 1; ideal Misi 4–5 + SQL Blok 2.
+- S4 L3 (dataclass) dan L4 (Pydantic) tetap, sekarang bagian Misi 1.
+
 ## Belum diputuskan
 
-- Metode dan model belajar (peran AI, urutan Tutor → Assessor → Reviewer, cara mengukur pemahaman).
+- Apakah tiap misi perlu catatan review sendiri atau cukup digabung di review mingguan (lihat setelah Misi 1).
 
 ## Glosarium (catatan istilah)
 

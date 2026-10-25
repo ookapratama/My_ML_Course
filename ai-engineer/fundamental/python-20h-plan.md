@@ -1,6 +1,6 @@
 # Python in 20 Hours — Pareto Track for AI Engineering
 
-> 10 sessions × 2 hours. Each session = **1h45m learn + practice** and a **15-minute review** at the end.
+> Session 1–3 (selesai) + 7 Misi berbasis hasil (lihat bagian "Misi"). Tiap sesi belajar diakhiri **15-minute review**.
 > Built for a developer who already knows Go / TypeScript / PHP — no "what is a variable" content.
 > The 20% of Python that delivers 80% of what AI Engineering (and Veritas) needs.
 
@@ -45,65 +45,66 @@
 - **Resources:** [Real Python: Primer on Decorators](https://realpython.com/primer-on-python-decorators/), [Real Python: *args and **kwargs](https://realpython.com/python-kwargs-and-args/)
 - **15-min review** ✅ (do this after Lesson 4, once all sub-lessons are `[x]`)
 
-### [ ] Session 4 — OOP the Python way
-- [x] Lesson 1 — **Class dan object**: `class`, instance, attribute, `__init__`, `self` (explicit, unlike `this`) — `fundamental/session_four/lesson_one/index.py`
-- [x] Lesson 2 — **Method dan dunder methods**: method biasa, `__repr__`, `__eq__`, `__len__` — `fundamental/session_four/lesson_two/index.py`
-- [ ] Lesson 3 — **`@dataclass`** — 90% of your classes should be this or Pydantic — `fundamental/session_four/lesson_three/index.py`
-- [ ] Lesson 4 — **Pydantic v2 models** — validation + serialization (≈ Zod); this is the backbone of FastAPI and Veritas' typed interfaces — `fundamental/session_four/lesson_four/index.py`
-- [ ] Lesson 5 — **`@property`**, class vs instance attributes; when NOT to use classes (modules + functions are fine) — `fundamental/session_four/lesson_five/index.py`
+> **Perubahan 2026-10-25:** Session 4–10 diganti 7 "Misi" kecil (alasan: bosan karena belajar tanpa tujuan terlihat). Isi Session 1–3 tidak berubah. Detail alasan: vault `Projects/ml-engineering-journey/Decisions/2026-10-25 - Kurikulum Python jadi misi berbasis hasil.md`. Backup versi lama: lihat riwayat git.
+
+## Misi (menggantikan Session 4–10)
+
+Aturan tiap misi:
+- Ditulis satu kalimat tujuan di awal sesi: "Akhir sesi ini aku bisa melihat …".
+- Konsep Python diajarkan **saat kode buntu**, dimulai dari hasil akhir lalu mundur ke konsep yang dibutuhkan.
+- Kode ditulis user (guided mode). Hand-code tetap untuk chunking, cosine similarity, dan loop retrieve → augment → generate.
+- Sesi 25 menit fokus + 5 menit jeda, maksimal 2 putaran. 15-minute review tetap di akhir tiap misi.
+- Bosan lagi = sinyal untuk tinjau ulang urutan, bukan alasan berhenti.
+
+**Skor pemahaman** (dicatat di vault `Learning/Python untuk AI Engineering/Reviews/`):
+- Tiap sesi: 3 pertanyaan di akhir, skor `x/3`.
+- Tiap misi (15-minute review): recall `x/5` (dari ingatan, sebelum buka catatan), micro-exercise (lulus di percobaan ke-berapa), dan satu tugas debug (kode rusak kecil: ketemu sebabnya, ya/tidak).
+- Pembacaan: recall `<3/5` → topik goyah diulang di awal sesi berikutnya. `≥4/5` dua kali berturut-turut → misi berikutnya boleh dipercepat. Yang dinilai tren, bukan satu angka. Penilai awal adalah AI, jadi anggap angka sebagai indikasi.
+- Data latihan: sintetis atau yang sudah disamarkan. Kunci API lewat env var, tidak pernah ditulis di kode.
+
+### [ ] Misi 1 — Baca dan validasi data (lanjutan Session 4)
+- [x] Lesson 1 — **Class dan object**: `class`, instance, attribute, `__init__`, `self` — `fundamental/session_four/lesson_one/index.py`
+- [x] Lesson 2 — **Method dan dunder methods**: `__repr__`, `__eq__`, `__len__` — `fundamental/session_four/lesson_two/index.py`
+- [ ] Lesson 3 — **`@dataclass`** (sedang berjalan) — `fundamental/session_four/lesson_three/index.py`
+- [ ] Lesson 4 — **Pydantic v2 models**: validasi + serialisasi (≈ Zod) — `fundamental/session_four/lesson_four/index.py`
+- [ ] Lesson 5 — **Baca CSV/JSON + `try/except`**: tolak baris rusak dengan pesan jelas — `fundamental/session_four/lesson_five/index.py`
+- **Hasil yang terlihat:** skrip membaca file CSV/JSON sintetis, baris valid jadi model Pydantic, baris rusak dilaporkan dengan alasannya.
 - **Resources:** [Real Python: Data Classes](https://realpython.com/python-data-classes/), [Pydantic docs — Models](https://docs.pydantic.dev/latest/concepts/models/)
-- **15-min review** ✅ (do this after Lesson 5, once all sub-lessons are `[x]`)
 
-### [ ] Session 5 — Typing, errors, context managers
-- Type hints: `list[str]`, `dict[str, int]`, `Optional`/`| None`, `TypeVar`, generics
-- **`Protocol`** — structural typing ≈ Go interfaces; exactly how Veritas' swappable `Embedder` / `LLMClient` / `Retriever` interfaces will be defined
-- Exceptions & EAFP ("ask forgiveness, not permission" — vs Go's explicit `err` checks); `try/except/else/finally`, custom exceptions
-- Context managers: `with open(...)`, writing your own via `contextlib.contextmanager` (≈ Go's `defer`)
-- **Resources:** [mypy cheat sheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html), [Real Python: Python Type Checking](https://realpython.com/python-type-checking/)
-- **15-min review** ✅
+### [ ] Misi 2 — Potong teks (chunking)
+- Type hints dasar (`list[str]`, `| None`), fungsi murni, `pathlib.Path`, dasar `pytest` (1 happy path + 1 edge case)
+- **Hand-code** fungsi `chunk_text` (edge case: teks kosong, hanya tanda baca, teks non-ASCII, pemisah berurutan)
+- **Hasil yang terlihat:** satu dokumen terpotong jadi chunk rapi, tes lulus dengan `uv run pytest`.
 
-### [ ] Session 6 — Iterators & generators
-- The iteration protocol (`__iter__` / `__next__`) — why `for` works on everything
-- **`yield`** and generator functions — lazy, memory-efficient pipelines
-- Generator expressions vs list comprehensions (when to stream vs materialize)
-- `itertools` greatest hits: `chain`, `islice`, `batched` — this maps directly to document chunking and streaming LLM responses
-- **Resources:** [Real Python: Generators](https://realpython.com/introduction-to-python-generators/), [itertools docs](https://docs.python.org/3/library/itertools.html)
-- **15-min review** ✅
+### [ ] Misi 3 — Panggil LLM
+- Panggilan API, env var (`os.environ`), `try/except/else/finally`, custom exception, context manager, `logging` dasar
+- **Hasil yang terlihat:** kirim pertanyaan ke Claude/Ollama, jawaban tampil, error jaringan ditangani dengan pesan yang jelas.
 
-### [ ] Session 7 — Async Python
-- `asyncio` event loop vs Node's (explicit `asyncio.run`, nothing is async by default)
-- `async def` / `await`, `asyncio.gather` (≈ `Promise.all`), `asyncio.TaskGroup`
-- `httpx` async client — concurrent HTTP calls
-- **Semaphore-based rate limiting** — the exact pattern for firing concurrent LLM API calls without hitting rate limits
-- **Resources:** [Real Python: Async IO in Python](https://realpython.com/async-io-python/), [httpx docs — Async](https://www.python-httpx.org/async/)
-- **15-min review** ✅
+### [ ] Misi 4 — Embedding dan cosine similarity
+- List vs NumPy dasar (shape, dot product), `Protocol` untuk `Embedder` (≈ Go interface)
+- **Hand-code** cosine similarity dengan shape comment `# (n, dim) @ (dim,) -> (n,)`
+- **Hasil yang terlihat:** "cari kalimat paling mirip" dari 20 kalimat.
 
-### [ ] Session 8 — NumPy essentials
-- `ndarray`: shape, dtype, why it's 100× faster than lists (vectorization)
-- Indexing, boolean masks, `axis` semantics
-- **Broadcasting** — the one concept that unlocks all of NumPy/PyTorch
-- Dot product → **hand-code cosine similarity** with shape comments `# (n, dim) @ (dim,) -> (n,)` — this directly pre-loads a Veritas Phase 1 hand-code item
-- **Resources:** [NumPy quickstart](https://numpy.org/doc/stable/user/quickstart.html), [NumPy: Broadcasting](https://numpy.org/doc/stable/user/basics.broadcasting.html)
-- **15-min review** ✅
+### [ ] Misi 5 — Mini-RAG
+- Menyatukan Misi 1–4. **Hand-code** loop retrieve → augment → generate, hasil sebagai dataclass
+- **Hasil yang terlihat:** tanya satu dokumen, dapat jawaban + sumber chunk. Ini pintu masuk ke Veritas Phase 1.
 
-### [ ] Session 9 — Files, data handling, pandas basics
-- `pathlib.Path` (never string paths), reading/writing text and binary
-- `json` module, `csv` module — parsing real formats (feeds Veritas ingestion)
-- Env vars (`os.environ`, `python-dotenv`), `logging` basics (not `print`)
-- pandas in 30 minutes: `DataFrame`, `read_csv`, filtering, `groupby` — just the data-engineering slice
-- **Resources:** [pandas: 10 minutes to pandas](https://pandas.pydata.org/docs/user_guide/10min.html), [Real Python: pathlib](https://realpython.com/python-pathlib/)
-- **15-min review** ✅
+### [ ] Misi 6 — Banyak pertanyaan sekaligus (bonus)
+- `asyncio`, `await`, `asyncio.gather`, semaphore untuk batas laju
+- **Hasil yang terlihat:** 20 pertanyaan jalan bersamaan, lebih cepat dari berurutan.
 
-### [ ] Session 10 — Capstone + testing
-- **Mini-RAG warm-up, end to end:** read a text file → chunk it (generator from S6) → toy-embed each chunk (NumPy from S8) → cosine-rank against a query → print top-k with a `dataclass` result type (S4) and `Protocol`-based embedder (S5)
-- `pytest` basics: co-located `test_*.py`, happy path + 1 edge case per function, `uv run pytest`
-- Project layout under `uv`: `pyproject.toml`, entry point, `uv run`
-- **This is the on-ramp to Veritas Phase 1** — the next session after this one is Veritas, not more Python
-- **Resources:** [pytest getting started](https://docs.pytest.org/en/stable/getting-started.html), your own Sessions 1–9 notes
-- **15-min review** ✅ (extended: review the shakiest topic from the whole track)
+### [ ] Misi 7 — Ukur kualitas (bonus)
+- Generator dan `itertools.batched` (hanya yang dipakai), pandas dasar (`read_csv`, filter, `groupby`)
+- **Hasil yang terlihat:** dari 10 pertanyaan uji, tampil berapa yang dijawab benar.
+
+### Cadangan (dipelajari penuh hanya kalau penasaran atau dibutuhkan)
+- `@property`, class vs instance attribute (sisa Session 4 Lesson 5 lama), kapan tidak memakai class
+- Iterator protocol (`__iter__`/`__next__`), generator mendalam
+- NumPy mendalam (broadcasting, boolean mask, `axis`)
+- `TypeVar` dan generics
 
 ---
 
-## After the track
+## Setelah misi
 
-Return to `D:\ooka\dev\ai-engineer\PROGRESS.md` — Phase 0, next action: scaffold repo + stand up the local stack. Everything hand-coded here (chunking, cosine similarity, typed interfaces) gets reused there for real.
+Kembali ke `PROGRESS.md` (di `ai-engineer/`) — Phase 0, tindakan berikutnya: scaffold repo + stand up local stack. Misi 1–5 sudah memberi mini-RAG yang bisa dipakai ulang di Phase 1.
