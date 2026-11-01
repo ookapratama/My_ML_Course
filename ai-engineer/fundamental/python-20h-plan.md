@@ -66,7 +66,7 @@ Aturan tiap misi:
 - [x] Lesson 1 — **Class dan object**: `class`, instance, attribute, `__init__`, `self` — `fundamental/session_four/lesson_one/index.py`
 - [x] Lesson 2 — **Method dan dunder methods**: `__repr__`, `__eq__`, `__len__` — `fundamental/session_four/lesson_two/index.py`
 - [x] Lesson 3 — **`@dataclass`** (sedang berjalan) — `fundamental/session_four/lesson_three/index.py`
-- [ ] Lesson 4 — **Pydantic v2 models**: validasi + serialisasi (≈ Zod) — `fundamental/session_four/lesson_four/index.py`
+- [x] Lesson 4 — **Pydantic v2 models**: validasi + serialisasi (≈ Zod) — `fundamental/session_four/lesson_four/index.py`
 - [ ] Lesson 5 — **Baca CSV/JSON + `try/except`**: tolak baris rusak dengan pesan jelas — `fundamental/session_four/lesson_five/index.py`
 - **Hasil yang terlihat:** skrip membaca file CSV/JSON sintetis, baris valid jadi model Pydantic, baris rusak dilaporkan dengan alasannya.
 - **Resources:** [Real Python: Data Classes](https://realpython.com/python-data-classes/), [Pydantic docs — Models](https://docs.pydantic.dev/latest/concepts/models/)
